@@ -5,22 +5,29 @@ import firebase from "../utils/firebase";
 
 export default function LoginForm(props) {
     const { changeForm } = props;
-
+    const [formData, setFormData] = useState(defaultValue());
     const login = () => {
         console.log("Iniciando sesión");
-    }
+        console.log(formData);
+    };
+
+    const onChange = (e, type) => {
+        setFormData({ ...formData, [type]: e.nativeEvent.text });
+    };
 
     return (
         <>
             <TextInput
                 style={styles.input}
                 placeholder="Correo electrónico"
-                placeholderTextColor="#969696" />
+                placeholderTextColor="#969696"
+                onChange={(e) => onChange(e, "email")} />
             <TextInput
                 style={styles.input}
                 placeholder="Contraseña"
                 placeholderTextColor="#969696"
-                secureTextEntry={true} />
+                secureTextEntry={true}
+                onChange={(e) => onChange(e, "password")} />
 
             <TouchableOpacity onPress={login}>
                 <Text style={styles.btnText}  >Iniciar sesión</Text>
@@ -33,6 +40,13 @@ export default function LoginForm(props) {
             </View>
         </>
     );
+}
+
+function defaultValue() {
+    return {
+        email: "",
+        password: "",
+    }
 }
 
 const styles = StyleSheet.create({
