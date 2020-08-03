@@ -17,7 +17,14 @@ export default function LoginForm(props) {
             errors.email = true;
         }
         else {
-            console.log("okey");
+            firebase.auth()
+                .signInWithEmailAndPassword(formData.email, formData.password)
+                .catch(() => {
+                    setFormError({
+                        email: true,
+                        password: true,
+                    })
+                })
         }
         setFormError(errors);
     };
