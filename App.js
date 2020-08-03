@@ -28,7 +28,6 @@ export default function App() {
 }
 
 function Logout() {
-
   const logout = () => {
     firebase.auth().signOut();
   }
