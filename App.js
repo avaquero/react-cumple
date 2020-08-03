@@ -26,7 +26,7 @@ export default function App() {
     </>
   )
 }
-//comentario
+
 function Logout() {
   const logout = () => {
     firebase.auth().signOut();
