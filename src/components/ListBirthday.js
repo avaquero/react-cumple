@@ -15,6 +15,7 @@ export default function ListBirthday(props) {
     const [showList, setShowList] = useState(true);
     const [birthday, setBirthday] = useState([]);
     const [pasatBirthday, setPasatBirthday] = useState([]);
+    const [reloadData, setReloadData] = useState(false)
 
     useEffect(() => {
         setPasatBirthday([]);
@@ -31,7 +32,8 @@ export default function ListBirthday(props) {
                 });
                 formatData(itemsArray);
             });
-    }, []);
+        setReloadData(false);
+    }, [reloadData]);
 
 
     const formatData = (items) => {
@@ -76,7 +78,7 @@ export default function ListBirthday(props) {
                     ))}
                 </ScrollView>
             ) : (
-                    <AddBirthday user={user} setShowList={setShowList} />
+                    <AddBirthday user={user} setShowList={setShowList} setReloadData={setReloadData} />
                 )}
 
             <ActionBar showList={showList} setShowList={setShowList} />

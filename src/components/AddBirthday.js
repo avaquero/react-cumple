@@ -11,7 +11,7 @@ const db = firebase.firestore(firebase);
 
 export default function AddBirthday(props) {
 
-    const { user, setShowList } = props;
+    const { user, setShowList, setReloadData } = props;
 
     const [formData, setFormData] = useState({});
 
@@ -53,6 +53,7 @@ export default function AddBirthday(props) {
             db.collection(user.uid)
                 .add(data)
                 .then(() => {
+                    setReloadData(true);
                     setShowList(true);
                 })
                 .catch(() => {
