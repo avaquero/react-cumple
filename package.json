@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^2.6.1",
+    "base-64": "^0.1.0",
     "firebase": "^7.17.1",
     "moment": "^2.27.0",
     "react": "16.13.1",
